@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dtechbots</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<div class="navbar navbar-fixed-top">  
+  <div class="navbar-inner">  
+    <div class="container">  
+      <ul class="nav nav-pills nav-stacked">  
+			<li>  
+			<%=link_to "Home", "" %></li>  
+		 	<li><%=link_to "Inventory", inventories_path %>  </li>	
+			<li><a href="#">Dashboard</a></li>   
+			<li><a href="#">Logout</a></li>   
+		</ul>  
+    </div>  
+  </div>  
+</div>
+ 
+
+	<div class="container-fluid">  
+  <div class="row-fluid">  
+    <div class="span2">  
+      <!--Sidebar content-->  
+       <ul class="nav nav-pills nav-stacked">  
+			<li class="active">  
+			<a href="#">Home</a></li>     
+			<li><a href="#">Tutorials</a></li>  
+			<li><a href="#">Practice Editor </a></li>   
+			<li><a href="#">Gallery</a></li>   
+			<li><a href="#">Contact</a></li>   
+		</ul>  
+ 
+    </div>  
+    <div class="span10">  
+    	<%= yield %>
+      <!--Body content-->  
+    </div>  
+  </div>  
+</div>  
+ 
+
+
+</body>
+</html>
