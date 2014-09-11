@@ -4,6 +4,8 @@
   <title>Dtechbots</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -65,6 +67,7 @@
            
                <li><%=link_to "Members",members_path,class:"glyphicon glyphicon-user" %>  </li> 
                <li><%=link_to "Admins", "",class:"glyphicon glyphicon-user" %>  </li>   
+                <li><%=link_to " Logout ", logout_path,class:"glyphicon glyphicon-off" %>  </li>
           <%end%>
 		</ul>  
  
@@ -78,6 +81,7 @@
   </div>  
 </div>  
   
+
 
 </body>
 </html>
