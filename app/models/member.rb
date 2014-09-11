@@ -5,5 +5,7 @@ class Member < ActiveRecord::Base
   					 :username,:password, :password_confirmation
 
   validates_uniqueness_of :username
+  validates :password, length:{minimum:6}
+  validates :password_confirmation, presence: true , on: :create
 
 end

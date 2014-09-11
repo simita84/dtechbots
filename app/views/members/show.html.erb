@@ -1,0 +1,30 @@
+
+<div class="page-header">
+	<h3>Show Member</h3>
+</div>
+
+<p id="notice" class="alert"><%= notice %></p>
+
+
+<table class="table table-striped">
+
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>First name:</th>
+			<th>Last name:</th>
+		</tr>
+	</thead>
+
+	<tbody><tr>
+		<td> <%= @member.username %></td>
+		<td> <%= @member.first_name %></td>
+		<td> <%= @member.last_name %></td>
+	 
+		</tr>
+    </tbody> 
+
+</table>
+
+<%= link_to 'Edit', edit_member_path(@member),class:"btn" %> |
+<%= link_to 'Back', members_path,class:"btn" %>

@@ -61,10 +61,10 @@
                <li><%=link_to "Dashboard",{:controller=>"home",:action=>"index"},class:"glyphicon glyphicon-dashboard"%></li>  
                <li><%=link_to "Inventory",inventories_path,class:"glyphicon glyphicon-gift" %>  </li>   
         			 <li><%=link_to "Orders",orders_path,class:"glyphicon glyphicon-shopping-cart" %>  </li>  
-               <li><%=link_to "Profile",admin_path(current_admin),class:"glyphicon glyphicon-cog " %>  </li> 
+               <li><%=link_to "Profile",admin_path(current_admin),class:"glyphicon glyphicon-wrench" %>  </li> 
            
-               <li><%=link_to "Members",members_path,class:"glyphicon glyphicon-cog " %>  </li> 
-               <li><%=link_to "Admins", "",class:"glyphicon glyphicon-cog " %>  </li>   
+               <li><%=link_to "Members",members_path,class:"glyphicon glyphicon-user" %>  </li> 
+               <li><%=link_to "Admins", "",class:"glyphicon glyphicon-user" %>  </li>   
           <%end%>
 		</ul>  
  

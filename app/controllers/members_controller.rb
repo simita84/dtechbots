@@ -15,7 +15,15 @@ class MembersController < ApplicationController
     end
   end
 
-  
+  def show
+    @member = Member.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @member }
+    end
+  end
+
 
   # GET /members/new
   # GET /members/new.json
@@ -28,10 +36,7 @@ class MembersController < ApplicationController
     end
   end
 
-  # GET /members/1/edit
-  def edit
-    @member = Member.find(params[:id])
-  end
+ 
 
   # POST /members
   # POST /members.json
@@ -49,6 +54,12 @@ class MembersController < ApplicationController
     end
   end
 
+
+
+ # GET /members/1/edit
+  def edit
+    @member = Member.find(params[:id])
+  end
   # PUT /members/1
   # PUT /members/1.json
   def update
