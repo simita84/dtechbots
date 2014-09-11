@@ -11,14 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140905180249) do
+ActiveRecord::Schema.define(:version => 20140910211830) do
+
+  create_table "admins", :force => true do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "inventories", :force => true do |t|
-    t.string   "bk_name",                                   :null => false
-    t.integer  "bk_qty",                                    :null => false
-    t.decimal  "bk_price",   :precision => 10, :scale => 0, :null => false
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.string   "bk_name",                                                 :null => false
+    t.decimal  "bk_price",                 :precision => 10, :scale => 0, :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.string   "bk_author",  :limit => 50,                                :null => false
+  end
+
+  create_table "members", :force => true do |t|
+    t.string   "username"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "bk_name",                          :null => false
+    t.integer  "bk_qty",                           :null => false
+    t.string   "order_status", :default => "OPEN"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
 end

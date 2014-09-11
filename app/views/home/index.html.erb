@@ -1,0 +1,121 @@
+ 
+<div class="page-header">
+ <h3 class="glyphicon glyphicon-dashboard">Dashboard </h3>
+</div>
+
+<div class="container" id="dashboard" >  
+	
+		<div class="row" > 
+
+			<div class="span8" id="dash1">
+
+				<h3 class="leftMargin"> Recent  Orders</h3>
+
+				<table class="table">
+
+				 	<thead>
+				 		<tr>
+				 			<th>Book Name</th>
+				 			<th>Quantity</th>
+				 			<th>Order Status</th>
+				 			<th>Created(UTC)</th>
+				 			<th>Last modified(UTC)</th>
+
+				 		</tr>
+				 	</thead>
+				<% @orders.each do |order| %>
+
+				 	<tbody>
+				 		<tr>
+				 			<td><%=order.bk_name%></td>
+				 			<td><%=order.bk_qty%></td>
+				 			<td>
+
+
+				 				<%case order.order_status%>
+				 					<%when "CLOSED"%>
+				 						<span class="badge badge-success">
+				 					<%when "In Progress"%>
+				 						<span class="badge badge-warning">
+				 					<%else%>
+				 					    <span class="badge badge-important">
+				 				<%end %>
+				 								
+						 				<%=order.order_status%>		
+				 				       </span>
+				 					
+				 			</td>
+				 			
+				 			<td><%=order.created_at.strftime("%m/%d/%Y %I:%M%p")%></td>
+				 			<td><%=order.updated_at.strftime("%m/%d/%Y %I:%M%p")%></td>
+				 		
+				 		</tr>
+				 	</tbody>
+ 		
+				<%end%>
+			</table>
+				 
+  		</div>
+  		</div>
+
+  		<div class="blankPara">
+  		</div>
+
+  		<div class="row">
+			 
+	    			<div class="span8" id="dash2">
+		  
+				 		<h3 class="leftMargin">Members Activity</h3>
+
+				 		  
+				<table class="table">
+
+				 	<thead>
+				 		<tr>
+				 			<th>Book Name</th>
+				 			<th>Quantity</th>
+				 			<th>Order Status</th>
+				 			<th>Created(UTC)</th>
+				 			<th>Last modified(UTC)</th>
+
+				 		</tr>
+				 	</thead>
+				<% @orders.each do |order| %>
+
+				 	<tbody>
+				 		<tr>
+				 			<td><%=order.bk_name%></td>
+				 			<td><%=order.bk_qty%></td>
+				 			<td>
+
+
+				 				<%case order.order_status%>
+				 					<%when "CLOSED"%>
+				 						<span class="badge badge-success">
+				 					<%when "In Progress"%>
+				 						<span class="badge badge-warning">
+				 					<%else%>
+				 					    <span class="badge badge-important">
+				 				<%end %>
+				 								
+						 				<%=order.order_status%>		
+				 				       </span>
+				 					
+				 			</td>
+				 			
+				 			<td><%=order.created_at.strftime("%m/%d/%Y %I:%M%p")%></td>
+				 			<td><%=order.updated_at.strftime("%m/%d/%Y %I:%M%p")%></td>
+				 		
+				 		</tr>
+				 	</tbody>
+ 		
+				<%end%>
+			</table>
+
+
+		  			</div>
+		</div>
+		
+		   
+	</div>
+ 

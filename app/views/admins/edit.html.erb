@@ -1,0 +1,38 @@
+ 
+<div class="container">
+ 
+	  <div class="page-header">
+		<h3>Change Settings</h3>
+	</div>
+	<div class="row">
+		<div class="span6 offset1">
+
+  		 <%=form_for(@admin,:url=>{:action=>'update',:id =>@admin.id}) do |f| %>
+  		 
+			  
+
+				<table class="table table-striped">
+					 <thead>
+					 	<h4>Admin Credentials</h4></thead>
+						<tr>
+							<th>Username</th>
+								
+							<td><%=f.text_field(:username)%></td>
+						</tr>
+						<tr>
+							<th>Password  </th>
+							<td><%=f.password_field(:password)%></td>
+						</tr>
+						<tr><td></td>
+							<td> 	
+							  <%=submit_tag "Modify" ,:class=>"btn" %> 	 
+							 <%=link_to("Cancel",{:action=>'index'},:class=>"btn")%>
+							</td>
+						</tr>
+					 
+				<%end%>
+				</table>
+
+
+		</div></b></div>
+</div>

@@ -2,9 +2,13 @@ class InventoriesController < ApplicationController
   # GET /inventories
   # GET /inventories.json
   layout 'admin'
-  def index
-    @inventories = Inventory.all
 
+  before_filter :confirm_admin_logged_in
+ 
+
+  def index
+    @inventories = Inventory.order("inventories.created_at DESC").paginate(page: params[:page],per_page: 5)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @inventories }
@@ -33,10 +37,7 @@ class InventoriesController < ApplicationController
     end
   end
 
-  # GET /inventories/1/edit
-  def edit
-    @inventory = Inventory.find(params[:id])
-  end
+ 
 
   # POST /inventories
   # POST /inventories.json
@@ -52,6 +53,11 @@ class InventoriesController < ApplicationController
         format.json { render json: @inventory.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+   # GET /inventories/1/edit
+  def edit
+    @inventory = Inventory.find(params[:id])
   end
 
   # PUT /inventories/1

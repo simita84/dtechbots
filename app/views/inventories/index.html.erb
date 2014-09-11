@@ -1,13 +1,18 @@
 <%- model_class = Inventory -%>
 <div class="page-header">
-  <h1><%=Inventory %></h1>
+  <h3 class="glyphicon glyphicon-gift"><%=Inventory%></h3>
 </div>
+
+<div class="pagination">
+  <%= will_paginate @inventories, renderer: BootstrapPagination::Rails %>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:book_name) %></th>
-      <th><%= model_class.human_attribute_name(:Quantity) %></th>
+      <th><%= model_class.human_attribute_name(:ID) %></th>
+      <th><%= model_class.human_attribute_name(:Name) %></th>
+      <th><%= model_class.human_attribute_name(:Author) %></th>
       <th><%= model_class.human_attribute_name(:Price) %>(Rs)</th>
       <th><%= model_class.human_attribute_name(:created_at) %>(UTC)</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -16,9 +21,9 @@
   <tbody>
     <% @inventories.each do |inventory| %>
       <tr>
-        <td><%= link_to inventory.id, inventory_path(inventory) %></td>
+        <td>#<%= link_to inventory.id, inventory_path(inventory) %></td>
         <td><%= inventory.bk_name %></td>
-        <td><%= inventory.bk_qty %></td>
+        <td><%= inventory.bk_author %></td>
         <td><%= inventory.bk_price %></td>
         <td><%= inventory.created_at.strftime("%m/%d/%Y %I:%M%p")%></td>
         <td>

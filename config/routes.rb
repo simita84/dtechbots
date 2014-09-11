@@ -1,7 +1,24 @@
 Dtechbots::Application.routes.draw do
-  resources :inventories
+    
+  
+  
 
-  #root :to => 'static_pages#home'
+  resources :admins
+  resources :sessions
+  resources :inventories
+  resources :orders
+  resources :members
+
+
+
+  root to: 'admins#index'
+  
+ 
+ 
+  get 'login' , to: 'sessions#new',     as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
