@@ -1,24 +1,43 @@
 Dtechbots::Application.routes.draw do
     
   
-  
+   get "manage_member_pages/home"
+
 
   resources :admins
   resources :sessions
   resources :inventories
   resources :orders
   resources :members
+ 
 
 
 
   root to: 'admins#index'
+    
+
+  match 'member_pages/index', to: 'manage_member_pages#index'
+  match 'member_pages/home', to: 'manage_member_pages#home'
+  match 'member_pages/inventory', to: 'manage_member_pages#listInventory'
+  match 'member_pages/createOrder', to: 'manage_member_pages#createOrder'
+
   
+  
+
  
  
   get 'login' , to: 'sessions#new',     as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+   get "/member",to: 'manage_member_pages#index'
+
+
   
+
+    # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+   match ':controller(/:action(/:id))(.:format)'
+   
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -73,7 +92,5 @@ Dtechbots::Application.routes.draw do
 
   # See how all your routes lay out with "rake routes"
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-   match ':controller(/:action(/:id))(.:format)'
+
 end
