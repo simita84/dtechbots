@@ -1,35 +1,33 @@
 Dtechbots::Application.routes.draw do
     
   
-   get "manage_member_pages/home"
 
+  root to: 'admins#index'
+  
 
   resources :admins
   resources :sessions
   resources :inventories
   resources :orders
   resources :members
+  resources :line_items
+  resources :carts
+  resources :member_session
+
+ 
  
 
-
-
-  root to: 'admins#index'
-    
-
-  match 'member_pages/index', to: 'manage_member_pages#index'
-  match 'member_pages/home', to: 'manage_member_pages#home'
-  match 'member_pages/inventory', to: 'manage_member_pages#listInventory'
+  match 'member_pages/index',       to: 'manage_member_pages#index'
+  match 'member_pages/home',        to: 'manage_member_pages#home'
+  match 'member_pages/inventory',   to: 'manage_member_pages#listInventory'
   match 'member_pages/createOrder', to: 'manage_member_pages#createOrder'
 
-  
-  
-
- 
+    
  
   get 'login' , to: 'sessions#new',     as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
-
-   get "/member",to: 'manage_member_pages#index'
+  get "/member",to: 'manage_member_pages#index'
+  get '/member_login' , to: 'member_session#new',  as: 'member_login'
 
 
   

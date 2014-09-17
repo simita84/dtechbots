@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h3>Listing cart items</h3>
+</div>
+
+<%index=0%>
+
+<table class="table" id="members_table">
+   <thead> 
+    <tr>
+       <th>Item Index</th>
+      <th>Item Name</th>
+       <th>Item QTY</th>
+      <th>Actions</th>
+    </tr></thead>
+
+  <tr>
+        <%current_cart.line_items.each do |line_item| %>
+          <td>#<%=index=index+1%> </td>
+          <td><%= line_item.inventory.bk_name%></td>
+          <td><%= line_item.bk_qty%></td>
+            
+             <td>  <%= link_to 'Modify',edit_line_item_path(line_item),class:"btn"%></td>
+             <td><%= link_to 'Remove',line_item_path(line_item), 
+                                   method: :delete, 
+                                   class:"btn btn-danger",
+                                   data: { confirm: 'Are you sure?' } 
+                                   %></td>
+        
+         
+  </tr>
+  <%end%>
+</table>
+
+       <%=link_to "Place Order","",class:"btn btn-danger"%> 
+ 

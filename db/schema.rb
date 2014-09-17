@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140910211830) do
+ActiveRecord::Schema.define(:version => 20140915153247) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -20,12 +20,28 @@ ActiveRecord::Schema.define(:version => 20140910211830) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "member_username", :null => false
+  end
+
+  add_index "carts", ["member_username"], :name => "index_carts_on_member_username"
+
   create_table "inventories", :force => true do |t|
     t.string   "bk_name",                                                 :null => false
     t.decimal  "bk_price",                 :precision => 10, :scale => 0, :null => false
     t.datetime "created_at",                                              :null => false
     t.datetime "updated_at",                                              :null => false
     t.string   "bk_author",  :limit => 50,                                :null => false
+  end
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "inventory_id"
+    t.integer  "cart_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "bk_qty"
   end
 
   create_table "members", :force => true do |t|

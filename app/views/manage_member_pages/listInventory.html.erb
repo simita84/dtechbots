@@ -10,28 +10,43 @@
 <table class="table ">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:ID) %></th>
+        <!--<th><%= model_class.human_attribute_name(:ID) %></th>-->
       <th><%= model_class.human_attribute_name(:Name) %></th>
       <th><%= model_class.human_attribute_name(:Author) %></th>
       <th><%= model_class.human_attribute_name(:Price) %>(Rs)</th>
+       <th><%= :Qty%></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="inventoryBody">
     <% @inventories.each do |inventory| %>
-      <tr>
-        <td>#<%= link_to inventory.id, inventory_path(inventory) %></td>
-        <td><%= inventory.bk_name %></td>
-        <td><%= inventory.bk_author %></td>
-        <td><%= inventory.bk_price %></td>
-        <td> <%= text_field :bk_qty ,:bk_qty,:id=>'bk_qty' %></td>
 
-        <td><%= link_to "Add to order",{:action=>"createOrder",
-                                        :bk_name=>inventory.bk_name,
-                                        :bk_name=>inventory.bk_author}, :class => 'btn btn-mini' %>
-        </td>
-      </tr>
+    <%=form_for(:line_item,:url=>{:controller=>"LineItems",
+                             :action=>"create",
+                             :inventory_id => inventory.id} ) do |f| %>  
+          <tr>
+            <!--<td>#<%= link_to inventory.id, inventory_path(inventory) %></td>-->
+            <td><%= inventory.bk_name %></td>
+            <td><%= inventory.bk_author %></td>
+            <td><%= inventory.bk_price %></td>
+            <td><%= f.number_field :bk_qty, :class => 'number_field' %></td>
+            <td> <%= f.submit%>
+            </td>
+          </tr>
     <% end %>
+      <% end %>
   </tbody>
 </table>
+
+<script type="text/javascript">
+
+$("document").ready(function() {
+        
+        $("#inventoryBody tr:even").css("background-color", "#C0C0C0");
+        $("#inventoryBody tr:odd").css("background-color", "white");
+        //$("p:odd").css("border", "3px solid red");
+        
+ });
+
+ </script>
  

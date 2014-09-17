@@ -2,7 +2,8 @@ class OrdersController < ApplicationController
   
   layout 'admin'
 
-  before_filter :confirm_admin_logged_in
+  #before_filter :confirm_admin_logged_in
+   before_filter :confirm_member_logged_in
 
 
   def index
@@ -19,7 +20,36 @@ class OrdersController < ApplicationController
 
 
   def create
+
+     
+
+    @order=Order.new
+    @line_items=LineItem.where(:cart_id=>current_cart.id)
+    @inventories=Inventory.all
+ 
+    @line_items.each do |line_item|
+        @inventories.each do |inventory|
+                    if line_item.inventory_id==inventory.id
+                      @order.bk_name=inventory.bk_name
+                      @order.bk_qty=line_item.bk_qty
+                      @order.order_status="OPEN"
+                       
+                  end
+        end
+
+      @order.save
+      @order=Order.new
+
+    end
+
+
+    
+     
+
   end
+
+
+
 
   def edit
     @order=Order.find(params[:id])

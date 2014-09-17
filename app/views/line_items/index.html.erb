@@ -1,0 +1,73 @@
+<div class="page-header">
+  <h3>Listing cart items</h3>
+</div>
+
+<%index=0%>
+ 
+
+<table class="table">
+ <thead> 
+    <tr>
+       <th>Item Index</th>
+      <th>Item Name</th>
+        <th>Book price  </th>
+       <th>Item QTY</th>
+      <th>Actions</th>
+    </tr></thead>
+
+
+<tbody id="tablebody"> 
+<% @line_items.each do |line_item| %>
+  <tr>
+  	     <td>#<%=index=index+1%> </td>
+
+            <%@inventories.each do |inventory| %>
+                  <%if line_item.inventory_id==inventory.id%>
+                    <td><%= inventory.bk_name%></td>
+                   
+                    <td><%= inventory.bk_price %></td>               
+                    <td><%= line_item.bk_qty%></td>
+                   
+
+                <%end%>
+            <%end%>
+             
+                      <td>  <%= link_to 'Modify',{:controller=>"LineItems",:action=>"edit",
+                                            :inventory_id=>line_item.inventory_id},
+                                            class:"btn"%> 
+                       <%= link_to 'Remove',line_item_path(line_item), 
+                                               method: :delete, 
+                                               class:"btn btn-danger",
+                                               data: { confirm: 'Are you sure?' } 
+                                               %></td>
+
+     <% end %>
+  </tr>
+
+  </tbody>
+
+
+
+</table>
+ 
+    
+    <%unless @line_items.empty?%>  
+      <%=link_to "Place order",{:controller=>"Orders",:action=>"create"},class:'btn'%>
+    <%end%>
+		
+
+<br />
+
+
+<script type="text/javascript">
+
+$("document").ready(function() {
+        
+        $("#tablebody tr:even").css("background-color", "#C0C0C0");
+        $("#tablebody tr:odd").css("background-color", "white");
+  
+        
+ });
+
+ </script>
+

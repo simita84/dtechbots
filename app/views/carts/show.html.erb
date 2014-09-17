@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Your Pragmatic Cart</h2>
+ 
+  
+        <%=current_cart.line_items%>
+
+ 
+ 
+    <td><%= link_to 'Edit', edit_cart_path(current_cart) %></td>
+    <td><%= link_to 'Destroy', current_cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ 
+ 
+
+
+ 

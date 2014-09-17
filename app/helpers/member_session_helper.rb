@@ -1,0 +1,2 @@
+module MemberSessionHelper
+end

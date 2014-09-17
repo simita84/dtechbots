@@ -1,0 +1,41 @@
+
+
+
+<%= form_for(:line_item,:url=>{:controller=>"LineItems",
+                        :action=>"update",:inventory_id=>@line_item.inventory_id }) do |f| %>
+
+ 
+ <table> 
+        
+
+
+                <%@inventories.each do |inventory| %>
+
+                    <%if @line_item.inventory_id==inventory.id%>
+                        <tr>
+                          <td><%= inventory.bk_name%></td>
+                        </tr>
+                        <tr>
+                           <td><%= inventory.bk_price %></td>
+                        </tr>
+
+                      
+                    <%end%>
+                <%end%>
+                  <tr><td>
+                                 <div class="field">
+                                    <%= f.label :bk_qty %><br />
+                                    <%= f.input_field :bk_qty %>
+                                </div>
+                </td></tr>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+</table>
+
+
+
+ 

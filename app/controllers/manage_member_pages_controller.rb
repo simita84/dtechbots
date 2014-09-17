@@ -2,6 +2,12 @@ class ManageMemberPagesController < ApplicationController
  
 	layout 'member'
 
+  before_filter :confirm_member_logged_in
+ 
+  
+  
+
+
   def home
     
 
